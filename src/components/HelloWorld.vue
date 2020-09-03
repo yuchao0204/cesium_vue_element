@@ -15,7 +15,10 @@ export default {
     }
   },
   mounted(){
+    console.log("Cesium VERSION=",Cesium.VERSION);
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmNzA1N2JhMy1kMWIyLTRlZTctODM3Mi0xMTQzZGJhMDM1ODMiLCJpZCI6MzMwOTcsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1OTc5ODIwNjJ9.WVv9hS-xIswal5Dn8X28p2F4DHbHGvU-UXnodl7uf4k';
     this.showtianditu();
+    // var viewer = new Cesium.Viewer('cesiumContainer');
   },
   methods:{
     showtianditu(){
@@ -24,11 +27,13 @@ export default {
       });
 
       var tileset = new Cesium.Cesium3DTileset({
+          // url: "../../dist/data/tileset.json",
           url: "http://localhost/data/tileset.json",
           classificationType: Cesium.ClassificationType.CESIUM_3D_TILE,
       });
+      viewer.scene.primitives.add(tileset);
       tileset.readyPromise.then(function () {
-        console.log("tileset",tileset);
+        console.log("test----");
         var boundingSphere = tileset.boundingSphere;
         viewer.camera.viewBoundingSphere(boundingSphere, new Cesium.HeadingPitchRange(0.0, -0.5, boundingSphere.radius));
         viewer.camera.lookAtTransform(Cesium.Matrix4.IDENTITY);
@@ -36,9 +41,6 @@ export default {
         throw (error);
       });
 
-
-
-      viewer.scene.primitives.add(tileset);
       
       //设置初始位置
       viewer.camera.setView({
@@ -59,7 +61,7 @@ export default {
       //     destination: Cesium.Cartesian3.fromDegrees(121.133199,31.164338, 1000)
       // });
       var a=new Cesium.Cesium3DTileset({
-        url: Cesium.IonResource.fromAssetId(144932),
+        url: Cesium.IonResource.fromAssetId(145408),
         //classificationType: Cesium.ClassificationType.CESIUM_3D_TILE,
       });
       a.style = new Cesium.Cesium3DTileStyle({
