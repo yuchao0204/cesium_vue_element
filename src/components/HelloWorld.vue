@@ -21,6 +21,7 @@
 <script>
 import * as Cesium from 'cesium/Cesium';
 import widgets from 'cesium/Widgets/widgets.css';
+import $ from 'jquery';
 
 export default {
   name: 'HelloWorld',
@@ -44,7 +45,6 @@ export default {
       navigationHelpButton:false
     });
     viewer._cesiumWidget._creditContainer.style.display = "none";
-    console.log("Cesium VERSION=",Cesium.VERSION);
     var tileset = new Cesium.Cesium3DTileset({
       url: "http://localhost:80/data/tileset.json",
       // classificationType: Cesium.ClassificationType.CESIUM_3D_TILE,
@@ -140,8 +140,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #cesiumContainer {
-  width: 100%;
-  height: 90%;
+  width: 90%;
+  /* height: 90%; */
 }
 .class1{
   border-radius: 5px;
@@ -170,7 +170,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  width: 90%;
+  width: 100%;
   min-height: 100%;
   height: auto;
   background: #000000;
